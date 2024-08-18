@@ -1,0 +1,11 @@
+version: "3.6"
+
+services:
+  mongodb:
+    image: 'mongo:${MONGO_VERSION}'
+    environment:
+      - 'MONGO_INITDB_DATABASE=${}'
+      - 'MONGO_INITDB_ROOT_PASSWORD=${}'
+      - 'MONGO_INITDB_ROOT_USERNAME=${}'
+    ports:
+      - '27017'
