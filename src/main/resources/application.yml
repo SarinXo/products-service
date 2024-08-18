@@ -1,0 +1,6 @@
+server:
+  port: ${APP_PORT:8080}
+
+spring:
+  profiles:
+    active: local # dev, prod - разработка на рабочем контуре. local - развертка локально у себя

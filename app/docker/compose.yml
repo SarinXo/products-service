@@ -1,0 +1,30 @@
+version: "3.8"
+name: eshop
+
+
+services:
+
+  mongodb:
+    image: mongo:7.0.7
+    container_name: mongo_db
+    environment:
+      MONGO_INITDB_DATABASE: mongo-products
+      MONGO_INITDB_ROOT_USERNAME: mongo
+      MONGO_INITDB_ROOT_PASSWORD: 12345678
+    volumes:
+      - ../data/mongodb:/data/mongodb
+    ports:
+      - "27000:27017"
+
+  minio:
+    image: quay.io/minio/minio:RELEASE.2024-08-17T01-24-54Z
+    container_name: minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: 12345678
+    volumes:
+      - ../data/minio:/data/minio
+    command: server /data/minio --console-address ":9001"
